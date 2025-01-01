@@ -10,10 +10,137 @@
     <meta name="keywords" content="social, network, friends, connect" />
     <title>Social Network - Search</title>
 
+    <!-- Стили за страницата -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <style>
+        /* Общи стилове за страницата */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        /* Стил за секцията с търсачката */
+        .search-bar {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Стил за резултатите от търсенето */
+        .search-results {
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .search-results h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .search-results-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .profile-suggestion {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-suggestion:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-suggestion img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-suggestion p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .profile-suggestion a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .profile-suggestion a:hover {
+            text-decoration: underline;
+        }
+
+        /* Допълнителни стилове за фута */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,13 +157,13 @@
 
     <main>
         <!-- Search Functionality -->
-        <section class="search-bar">
+    <!--    <section class="search-bar">
             <form method="POST" action="{% url 'search' %}">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Search for users..." required>
                 <button type="submit">Search</button>
             </form>
-        </section>
+        </section> -->
 
         <!-- Search Results Section -->
         <section class="search-results">
