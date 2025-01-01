@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Social network for connecting with friends" />
+    <meta name="keywords" content="social, network, friends, connect" />
+    <title>Social Network - Search</title>
+
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Search Users</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/settings">Settings</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Search Functionality -->
+        <section class="search-bar">
+            <form method="POST" action="{% url 'search' %}">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Search for users..." required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <!-- Search Results Section -->
+        <section class="search-results">
+            <h2>Search Results</h2>
+            {% if username_profile_list %}
+                <div class="search-results-list">
+                    {% for profile in username_profile_list %}
+                    <div class="profile-suggestion">
+                        <a href="/profile/{{ profile.user.username }}">
+                            <img src="{{ profile.profileimg.url }}" alt="{{ profile.user.username }}'s profile picture">
+                            <p>{{ profile.user.username }}</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No results found for "{{ request.POST.username }}"</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Network</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
